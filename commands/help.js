@@ -4,8 +4,10 @@ const path = require('path');
 
 async function helpCommand(sock, chatId, message) {
     const helpMessage = `
-   *🤖 ${settings.botName || 'Gura-io MD'}*  
-   by ${settings.botOwner || 'Ryou'}
+✦──✦ ${settings.botName || 'Gura-io MD'} ✦──✦
+⚡ by ${settings.botOwner || 'Ryou'} ⚡
+━━━━━━━━━━━━━━━━━━━━━━
+
 
 🌐 ≫ GENERAL COMMANDS ≪
 ✦ .help / .menu
