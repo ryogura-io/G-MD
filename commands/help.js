@@ -3,12 +3,11 @@ const fs = require('fs');
 const path = require('path');
 
 async function helpCommand(sock, chatId, message) {
-// React first
-        await sock.sendMessage(chatId, {react: { text: "📜", key: message.key }});
     const helpMessage = `
-✦── *ＧＵＲＡ.ＩＯ*  ──✦
-✦── by *ＲＹＯＵ*  ──✦
+✦──── *ＧＵＲＡ.ＩＯ*  ────✦
+✦──── by *ＲＹＯＵ*  ────✦
 PREFIX - [ . ]
+MODE - PUBLIC
 ━━━━━━━━━━━━━━━━━━━━━━
 ━━━━━━━━━━━━━━━━━━━━━━
 🌐 ≫ GENERAL COMMANDS ≪
@@ -24,7 +23,9 @@ PREFIX - [ . ]
 ✦ weather <city>
 ✦ news
 ✦ attp <text>
+✦ define <word>
 ✦ lyrics <song_title>
+✦ movie <movie-title>
 ✦ 8ball <question>
 ✦ groupinfo
 ✦ staff / admins 
@@ -127,6 +128,7 @@ PREFIX - [ . ]
 ✦ tiktok <link>
 ✦ video <song name>
 ✦ ytmp4 <link>
+✦ twitter <link>
 ━━━━━━━━━━━━━━━━━━━━━━
 🍥 ≫ ANIME ≪
 ✦ anime <anime_name>
