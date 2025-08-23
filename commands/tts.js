@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 async function ttsCommand(sock, chatId, text, message, language = 'en') {
+    // React first
+        await sock.sendMessage(chatId, {react: { text: "🔊", key: message.key }});
     if (!text) {
         await sock.sendMessage(chatId, { text: 'Please provide the text for TTS conversion.' });
         return;
