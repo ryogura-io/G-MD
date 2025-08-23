@@ -47,7 +47,6 @@ const { startTrivia, answerTrivia } = require('./commands/trivia');
 const { complimentCommand } = require('./commands/compliment');
 const { insultCommand } = require('./commands/insult');
 const { eightBallCommand } = require('./commands/eightball');
-const { lyricsCommand } = require('./commands/lyrics');
 const { dareCommand } = require('./commands/dare');
 const { truthCommand } = require('./commands/truth');
 const { clearCommand } = require('./commands/clear');
@@ -475,10 +474,6 @@ async function handleMessages(sock, messageUpdate, printLog) {
             case userMessage.startsWith('.8ball'):
                 const question = userMessage.split(' ').slice(1).join(' ');
                 await eightBallCommand(sock, chatId, question);
-                break;
-            case userMessage.startsWith('.lyrics'):
-                const songTitle = userMessage.split(' ').slice(1).join(' ');
-                await lyricsCommand(sock, chatId, songTitle);
                 break;
             case userMessage.startsWith('.simp'):
                 const quotedMsg = message.message?.extendedTextMessage?.contextInfo?.quotedMessage;
