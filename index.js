@@ -43,6 +43,16 @@ const { parsePhoneNumber } = require("libphonenumber-js")
 const { PHONENUMBER_MCC } = require('@whiskeysockets/baileys/lib/Utils/generics')
 const { rmSync, existsSync } = require('fs')
 const { join } = require('path')
+const animeCommand = require("./commands/anime")
+const lyricsCommand = require("./commands/lyrics")
+const twitterCommand = require("./commands/twitter")
+const dictionaryCommand = require("./commands/dictionary");
+const { urlCommand } = require("./commands/url");
+const { movieCommand } = require("./commands/movie");
+
+
+
+
 
 // Create a store object with required methods
 const store = {
@@ -144,13 +154,26 @@ XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
         const from = mek.key.remoteJid
         const msgText = mek.message.conversation || 
                         mek.message.extendedTextMessage?.text || ""
+        const isGroup = from.endsWith("@g.us");  // ✅ FIX: define isGroup here
 
-        // --- Personal Auto Reactions ---
-        const targetNumbers = ["2347010285113@s.whatsapp.net", "2348067657315@s.whatsapp.net","2348153827918@s.whatsapp.net"] // add more numbers as needed
-        if (targetNumbers.includes(sender)) {
-            await XeonBotInc.sendMessage(from, {
-                react: { text: "🐦", key: mek.key }
-            })
+        // --- Personal Auto Reactions (Groups Only) ---
+        const targetNumbers = [
+            "2347010285113@s.whatsapp.net",
+            "2348067657315@s.whatsapp.net",
+            "2348153827918@s.whatsapp.net"
+        ];
+
+        if (isGroup) {
+            const participantId = mek.key.participant; 
+            if (targetNumbers.includes(participantId)) {
+                try {
+                    await XeonBotInc.sendMessage(from, {   
+                        react: { text: "💎", key: mek.key }
+                    });
+                } catch (err) {
+                    console.error("Failed to react:", err);
+                }
+            }
         }
 
         // --- Command Reactions ---
@@ -166,66 +189,34 @@ XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
                 })
             }
 
-            // Handle .ani / .anime command
+            // Handle anime command separately
             if (command === ".ani" || command === ".anime") {
-                if (!args[1]) return await XeonBotInc.sendMessage(from, { text: "❌ Please provide an anime name!" })
-
-                const animeName = args.slice(1).join(" ")
-
-                try {
-                    const query = `
-                        query ($search: String) {
-                          Media(search: $search, type: ANIME) {
-                            id
-                            title { romaji english native }
-                            coverImage { large }
-                            description
-                            averageScore
-                            status
-                            genres
-                            episodes
-                            format
-                            siteUrl
-                          }
-                        }
-                    `
-
-                    const variables = { search: animeName }
-
-                    const res = await fetch("https://graphql.anilist.co", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                        body: JSON.stringify({ query, variables })
-                    })
-
-                    const data = await res.json()
-                    const anime = data.data.Media
-
-                    if (!anime) return await XeonBotInc.sendMessage(from, { text: "❌ Anime not found!" })
-
-                    const messageText = `
-🎬 *${anime.title.romaji || anime.title.english || anime.title.native}*
-⭐ Rating: ${anime.averageScore || "N/A"}
-📺 Status: ${anime.status || "N/A"}
-📚 Format: ${anime.format || "N/A"}
-🎞 Episodes: ${anime.episodes || "N/A"}
-🎭 Genres: ${anime.genres.join(", ") || "N/A"}
-🖇 MAL Link: ${anime.siteUrl || "N/A"}
-
-📝 Description:
-${anime.description ? anime.description.replace(/<[^>]+>/g, '') : "N/A"}
-                    `
-
-                    await XeonBotInc.sendMessage(from, {
-                        image: { url: anime.coverImage.large },
-                        caption: messageText
-                    })
-
-                } catch (err) {
-                    console.error(err)
-                    await XeonBotInc.sendMessage(from, { text: "❌ Failed to fetch anime info." })
-                }
+                return animeCommand(XeonBotInc, from, mek, args)
             }
+
+            if (command === ".lyrics" || command === ".lyric") {
+                return lyricsCommand(XeonBotInc, from, mek, args)
+            }
+
+            if (command === ".tw" || command === ".twitter") {
+                return twitterCommand(XeonBotInc, from, mek, args)
+            }
+
+            if (command === ".define") {
+                return dictionaryCommand(XeonBotInc, from, mek, args);
+            }
+
+            if (command === ".url") {
+                return urlCommand(XeonBotInc, from, mek);
+            }
+            
+            if (command === ".movie" || command === ".imdb") {
+                return movieCommand(XeonBotInc, from, mek, args);
+            }
+
+
+
+
         }
 
         // --- Continue normal handling ---
@@ -249,6 +240,7 @@ ${anime.description ? anime.description.replace(/<[^>]+>/g, '') : "N/A"}
         console.error("Error in messages.upsert:", err)
     }
 })
+
 
 
 
