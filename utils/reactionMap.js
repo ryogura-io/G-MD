@@ -14,6 +14,7 @@ module.exports = {
   ".sticker": "🖼",
   ".delete": "🗑",
   ".del": "🗑",
+  ".define": "📖",
   ".attp": "🔤",
   ".viewonce": "👀",
   ".vv": "👀",
@@ -61,6 +62,7 @@ module.exports = {
   ".imdb": "🎬",
   ".ytmp4": "📹",
   ".tiktok": "🎶",
+  ".tt": "🎶",
   ".instagram": "📷",
   ".img": "🖼",
   ".image": "🖼",
@@ -69,6 +71,7 @@ module.exports = {
   ".facebook": "🍿",
   ".fb": "🍿",
   ".twitter": "🐦", // (new planned feature)
+  ".tw": "🐦", // (new planned feature)
 
   // 🎌 Anime
   ".anime": "🍥",   // (new planned feature)
