@@ -19,8 +19,10 @@ const scheduleFileDeletion = (filePath) => {
     }, 10000); // 5 minutes
 };
 
-const convertStickerToImage = async (sock, quotedMessage, chatId) => {
+const convertStickerToImage = async (sock, quotedMessage, chatId, message) => {
     try {
+// React first
+        await sock.sendMessage(chatId, {react: { text: "🖼️", key: message.key }});
         const stickerMessage = quotedMessage.stickerMessage;
         if (!stickerMessage) {
             await sock.sendMessage(chatId, { text: 'Reply to a sticker with .simage to convert it.' });
