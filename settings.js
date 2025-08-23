@@ -7,7 +7,7 @@ const settings = {
   giphyApiKey: 'qnl7ssQChTdPjsKta2Ax2LMaGXz303tq',
   commandMode: "public",
   description: "This is Ryou's personal bot.",
-  version: "2.0.9",
+  version: "ALPHA 1.0",
 };
 
 module.exports = settings;
