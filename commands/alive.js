@@ -2,11 +2,6 @@ const settings = require("../settings");
 
 async function aliveCommand(sock, chatId, message) {
     try {
-        // React first
-        await sock.sendMessage(chatId, {
-            react: { text: "⚡", key: message.key }
-        });
-
         // Then reply
         const message1 = `*Gura Bot is Active!*\n\n` +
                        `*Version:* ${settings.version}\n` +
