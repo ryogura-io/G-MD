@@ -21,8 +21,6 @@ function initializeWarningsFile() {
 
 async function warnCommand(sock, chatId, senderId, mentionedJids, message) {
     try {
-// React first
-        await sock.sendMessage(chatId, {react: { text: "⚠️", key: message.key }});
         // Initialize files first
         initializeWarningsFile();
 
