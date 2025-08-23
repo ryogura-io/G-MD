@@ -1,3 +1,5 @@
+// utils/reactionMap.js
+
 module.exports = {
   // 🌐 General
   ".menu": "📂",
@@ -28,6 +30,7 @@ module.exports = {
   ".gpt": "🤖",
   ".gemini": "🌌",
   ".imagine": "🎨",
+  ".summarize": "📝",  // (new planned feature)
 
   // 🎯 Fun
   ".joke": "😂",
@@ -44,4 +47,11 @@ module.exports = {
   ".video": "🎬",
   ".ytmp4": "📹",
   ".tiktok": "🎶",
+  ".twitter": "🐦", // (new planned feature)
+
+  // 🎌 Anime
+  ".anime": "🍥",   // (new planned feature)
+  ".animesearch": "🔎",
+  ".ani": "✨",
+  ".anime": "✨",
 };
