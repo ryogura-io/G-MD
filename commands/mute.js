@@ -1,6 +1,8 @@
 const isAdmin = require('../lib/isAdmin');
 
 async function muteCommand(sock, chatId, senderId, durationInMinutes) {
+// React first
+        await sock.sendMessage(chatId, {react: { text: "🔒", key: message.key }});
     console.log(`Attempting to mute the group for ${durationInMinutes} minutes.`); // Log for debugging
 
     const { isSenderAdmin, isBotAdmin } = await isAdmin(sock, chatId, senderId);
