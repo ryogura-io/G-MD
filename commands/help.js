@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 async function helpCommand(sock, chatId, message) {
+// React first
+        await sock.sendMessage(chatId, {react: { text: "📜", key: message.key }});
     const helpMessage = `
 ✦── ${settings.botName || 'GURA-IO BOT'} ──✦
 ✦── by ${settings.botOwner || 'Ryou'} ──✦
