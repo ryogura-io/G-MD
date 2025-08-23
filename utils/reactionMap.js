@@ -11,13 +11,24 @@ module.exports = {
   ".weather": "⛅",
   ".news": "📰",
   ".lyrics": "🎶",
+  ".sticker": "🖼",
+  ".delete": "🗑",
+  ".del": "🗑",
+  ".attp": "🔤",
+  ".viewonce": "👀",
+  ".vv": "👀",
 
   // 👮‍♂️ Admin
   ".ban": "🔨",
-  ".kick": "🚪",
+  ".kick": "🥾",
   ".promote": "⬆️",
   ".demote": "⬇️",
   ".tagall": "📢",
+  ".unmute": "🔓",
+  ".unlock": "🔓",
+  ".mute": "🔒",
+  ".lock": "🔒",
+  ".warn": "⚠",
 
   // 🎮 Games
   ".tictactoe": "❌⭕",
@@ -43,15 +54,24 @@ module.exports = {
 
   // 📥 Downloader
   ".play": "🎵",
+  ".spotify": "🎵",
   ".song": "🎧",
   ".video": "🎬",
+  ".movie": "🎬",
+  ".imdb": "🎬",
   ".ytmp4": "📹",
   ".tiktok": "🎶",
+  ".instagram": "📷",
+  ".img": "🖼",
+  ".image": "🖼",
+  ".url": "🔗",
+  ".ig": "📷",
+  ".facebook": "🍿",
+  ".fb": "🍿",
   ".twitter": "🐦", // (new planned feature)
 
   // 🎌 Anime
   ".anime": "🍥",   // (new planned feature)
+  ".ani": "🍥",   // (new planned feature)
   ".animesearch": "🔎",
-  ".ani": "✨",
-  ".anime": "✨",
 };
