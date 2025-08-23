@@ -20,8 +20,6 @@ function formatTime(seconds) {
 
 async function pingCommand(sock, chatId, message) {
     try {
-        // React first
-        await sock.sendMessage(chatId, {react: { text: "⚡", key: message.key }});
         const start = Date.now();
         await sock.sendMessage(chatId, { text: 'Pong!' }, { quoted: message });
         const end = Date.now();
