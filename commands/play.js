@@ -3,6 +3,8 @@ const axios = require('axios');
 
 async function playCommand(sock, chatId, message) {
     try {
+// React first
+        await sock.sendMessage(chatId, {react: { text: "🎵", key: message.key }});
         const text = message.message?.conversation || message.message?.extendedTextMessage?.text;
         const searchQuery = text.split(' ').slice(1).join(' ').trim();
         
