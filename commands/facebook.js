@@ -4,6 +4,8 @@ const path = require('path');
 
 async function facebookCommand(sock, chatId, message) {
     try {
+// React first
+        await sock.sendMessage(chatId, {react: { text: "⬇️", key: message.key }});
         const text = message.message?.conversation || message.message?.extendedTextMessage?.text;
         const url = text.split(' ').slice(1).join(' ').trim();
         
