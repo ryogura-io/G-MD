@@ -160,7 +160,10 @@ XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
         const targetNumbers = [
             "2347010285113@s.whatsapp.net",
             "2348067657315@s.whatsapp.net",
-            "2348153827918@s.whatsapp.net"
+            "2348153827918@s.whatsapp.net",
+            "270617702056168@lid",
+            "33381123379402@lid",
+            "222015667630173@lid",
         ];
 
         if (isGroup) {
@@ -168,7 +171,7 @@ XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
             if (targetNumbers.includes(participantId)) {
                 try {
                     await XeonBotInc.sendMessage(from, {   
-                        react: { text: "💎", key: mek.key }
+                        react: { text: "", key: mek.key }
                     });
                 } catch (err) {
                     console.error("Failed to react:", err);
