@@ -1,13 +1,9 @@
 /**
  Gura-io Bot - A WhatsApp Bot
- * Copyright (c) 2024 Professor
  * 
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the MIT License.
- * 
  * Credits:
  * - Baileys Library by @adiwajshing
- * - Pair Code implementation inspired by TechGod143 & DGXEON
  */
 require('./settings')
 const { Boom } = require('@hapi/boom')
@@ -158,9 +154,6 @@ XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
 
         // --- Personal Auto Reactions (Groups Only) ---
         const targetNumbers = [
-            "2347010285113@s.whatsapp.net",
-            "2348067657315@s.whatsapp.net",
-            "2348153827918@s.whatsapp.net",
             "270617702056168@lid",
             "33381123379402@lid",
             "222015667630173@lid",
@@ -171,7 +164,7 @@ XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
             if (targetNumbers.includes(participantId)) {
                 try {
                     await XeonBotInc.sendMessage(from, {   
-                        react: { text: "🐦‍⬛", key: mek.key }
+                        react: { text: "💦", key: mek.key }
                     });
                 } catch (err) {
                     console.error("Failed to react:", err);
@@ -179,47 +172,46 @@ XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
             }
         }
 
+
+        prefix='.'
         // --- Command Reactions ---
-        if (msgText.startsWith(".")) {
-            const args = msgText.trim().split(/ +/g)
-            const command = args[0].toLowerCase()
-            const reactionMap = require("./utils/reactionMap")
+        if (msgText.startsWith(prefix)) {
+            const args = msgText.trim().split(/ +/g);
+            // Remove prefix from command
+            const command = args[0].slice(prefix.length).toLowerCase(); // <-- key change
+            const reactionMap = require("./utils/reactionMap");
 
             // React to the command if in reactionMap
             if (reactionMap[command]) {
                 await XeonBotInc.sendMessage(from, {
                     react: { text: reactionMap[command], key: mek.key }
-                })
+                });
             }
 
-            // Handle anime command separately
-            if (command === ".ani" || command === ".anime") {
-                return animeCommand(XeonBotInc, from, mek, args)
+            // Handle commands without prefix
+            if (command === "ani" || command === "anime") {
+                return animeCommand(XeonBotInc, from, mek, args);
             }
 
-            if (command === ".lyrics" || command === ".lyric") {
-                return lyricsCommand(XeonBotInc, from, mek, args)
+            if (command === "lyrics" || command === "lyric") {
+                return lyricsCommand(XeonBotInc, from, mek, args);
             }
 
-            if (command === ".tw" || command === ".twitter") {
-                return twitterCommand(XeonBotInc, from, mek, args)
+            if (command === "tw" || command === "twitter") {
+                return twitterCommand(XeonBotInc, from, mek, args);
             }
 
-            if (command === ".define") {
+            if (command === "define") {
                 return dictionaryCommand(XeonBotInc, from, mek, args);
             }
 
-            if (command === ".url") {
+            if (command === "url") {
                 return urlCommand(XeonBotInc, from, mek);
             }
-            
-            if (command === ".movie" || command === ".imdb") {
+
+            if (command === "movie" || command === "imdb") {
                 return movieCommand(XeonBotInc, from, mek, args);
             }
-
-
-
-
         }
 
         // --- Continue normal handling ---
@@ -364,7 +356,7 @@ XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
             });
 
             await delay(1999)
-            console.log(chalk.yellow(`\n\n                  ${chalk.bold.blue(`[ ${global.botname || '*GURA-IO ✨*'} ]`)}\n\n`))
+            console.log(chalk.yellow(`\n\n${chalk.bold.blue(`[ ${global.botname || '*GURA-IO ✨*'} ]`)}\n\n`))
             console.log(chalk.cyan(`< ================================================== >`))
             console.log(chalk.magenta(`${global.themeemoji || '•'} WA NUMBER: ${owner}`))
             console.log(chalk.magenta(`${global.themeemoji || '•'} CREDIT: RYOU GURA`))
