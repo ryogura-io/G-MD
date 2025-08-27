@@ -2,12 +2,15 @@ const settings = require('../settings');
 const fs = require('fs');
 const path = require('path');
 
+const data = JSON.parse(fs.readFileSync('./data/messageCount.json'));
+const currentMode = data.isPublic ? 'PUBLIC' : 'PRIVATE';
+
 async function helpCommand(sock, chatId, message) {
     const helpMessage = `
 ✦──── *ＧＵＲＡ.ＩＯ*  ────✦
 ✦──── by *ＲＹＯＵ*  ────✦
 PREFIX - [ . ]
-MODE - PUBLIC
+MODE - ${currentMode}
 ━━━━━━━━━━━━━━━━━━━━━━
 ━━━━━━━━━━━━━━━━━━━━━━
 🌐 ≫ GENERAL COMMANDS ≪
