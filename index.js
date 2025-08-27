@@ -164,7 +164,7 @@ XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
             if (targetNumbers.includes(participantId)) {
                 try {
                     await XeonBotInc.sendMessage(from, {   
-                        react: { text: "💦", key: mek.key }
+                        react: { text: "🐦‍⬛", key: mek.key }
                     });
                 } catch (err) {
                     console.error("Failed to react:", err);
