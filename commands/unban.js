@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { channelInfo } = require('../lib/messageConfig');
 
 async function unbanCommand(sock, chatId, message) {
     let userToUnban;
@@ -17,7 +16,7 @@ async function unbanCommand(sock, chatId, message) {
     if (!userToUnban) {
         await sock.sendMessage(chatId, { 
             text: 'Please mention the user or reply to their message to unban!', 
-            ...channelInfo 
+             
         });
         return;
     }
@@ -32,18 +31,18 @@ async function unbanCommand(sock, chatId, message) {
             await sock.sendMessage(chatId, { 
                 text: `Successfully unbanned ${userToUnban.split('@')[0]}!`,
                 mentions: [userToUnban],
-                ...channelInfo 
+                 
             });
         } else {
             await sock.sendMessage(chatId, { 
                 text: `${userToUnban.split('@')[0]} is not banned!`,
                 mentions: [userToUnban],
-                ...channelInfo 
+                 
             });
         }
     } catch (error) {
         console.error('Error in unban command:', error);
-        await sock.sendMessage(chatId, { text: 'Failed to unban user!', ...channelInfo });
+        await sock.sendMessage(chatId, { text: 'Failed to unban user!',  });
     }
 }
 
