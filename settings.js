@@ -1,6 +1,6 @@
 const settings = {
-  packname: 'Gura',
-  author: '‎',
+  packname: 'ＧＵＲＡ.ＩＯ',
+  author: '💎‎',
   botName: "Gura-io MD",
   botOwner: 'Ryou', // Your name
   ownerNumber: '2347010285113', //Set your number here without + symbol, just add country code & number without any space
