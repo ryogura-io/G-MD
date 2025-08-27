@@ -1,4 +1,8 @@
 const settings = require("../settings");
+const fs = require('fs');
+
+const data = JSON.parse(fs.readFileSync('./data/messageCount.json'));
+const currentMode = data.isPublic ? 'PUBLIC' : 'PRIVATE';
 
 async function aliveCommand(sock, chatId, message) {
     try {
@@ -6,7 +10,7 @@ async function aliveCommand(sock, chatId, message) {
         const message1 = `*Gura Bot is Active!*\n\n` +
                        `*Version:* ${settings.version}\n` +
                        `*Status:* Online\n` +
-                       `*Mode:* Public`;
+                       `*Mode:* ${currentMode}`;
 
         await sock.sendMessage(chatId, {
             text: message1,
