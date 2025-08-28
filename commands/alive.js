@@ -7,7 +7,7 @@ const currentMode = data.isPublic ? 'PUBLIC' : 'PRIVATE';
 async function aliveCommand(sock, chatId, message) {
     try {
         // Then reply
-        const message1 = `*Gura Bot is Active!*\n\n` +
+        const message1 = `*𝙶𝚄𝚁𝙰-𝙼𝙳 is Active!*\n\n` +
                        `*Version:* ${settings.version}\n` +
                        `*Status:* Online\n` +
                        `*Mode:* ${currentMode}`;
