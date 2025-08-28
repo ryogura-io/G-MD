@@ -81,4 +81,16 @@ module.exports = {
   "anime": "🍥",   // (new planned feature)
   "ani": "🍥",   // (new planned feature)
   "animesearch": "🔎",
+  "8ball": "🎱",
+  "textmaker": "✍️",
+  "jid": "🆔",
+  "mode": "⚙️",
+  "simage": "🖼",
+  "fancy": "✨",
+  "waifu": "💮",
+  "wife": "💍",
+  "wallpaper": "🖼",
+  "wp": "🖼",
+  "tiny": "🔗",
+  "tta": "🎵"
 };
