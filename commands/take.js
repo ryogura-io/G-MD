@@ -14,7 +14,7 @@ async function takeCommand(sock, chatId, message, args) {
         }
 
         // Get the packname from args or use default
-        const packname = args.join(' ') || 'GURA-IO ✨';
+        const packname = args.join(' ') || '𝙶𝚄𝚁𝙰-𝙼𝙳 💎';
 
         try {
             // Download the sticker
