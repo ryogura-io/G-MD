@@ -80,8 +80,8 @@ async function pairCommand(sock, chatId, message, q) {
                 forwardingScore: 1,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363161513685998@newsletter',
-                    newsletterName: 'GURA-IO ✨',
+                    newsletterJid: '',
+                    newsletterName: '𝙶𝚄𝚁𝙰-𝙼𝙳 💎',
                     serverMessageId: -1
                 }
             }
