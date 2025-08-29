@@ -34,7 +34,6 @@ const ownerCommand = require(`./commands/owner`);
 const deleteCommand = require(`./commands/delete`);
 const { handleAntilinkCommand, handleLinkDetection } = require(`./commands/antilink`);
 const { Antilink } = require(`./lib/antilink`);
-const memeCommand = require(`./commands/meme`);
 const tagCommand = require(`./commands/tag`);
 const jokeCommand = require(`./commands/joke`);
 const quoteCommand = require(`./commands/quote`);
@@ -91,6 +90,7 @@ const waifuCmd = require("./commands/waifu");
 const wallpaperCommand = require("./commands/wallpaper");
 const tinyCommand = require("./commands/tiny");
 const spotifyCommand = require("./commands/spotify");
+const profileCommand = require("./commands/profile.js");
 
 // Global settings
 global.packname = settings.packname;
@@ -291,7 +291,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
             case userMessage.startsWith(`${prefix}unban`):
                 await unbanCommand(sock, chatId, message);
                 break;
-            case userMessage === `${prefix}help` || userMessage === `${prefix}menu` || userMessage === `${prefix}bot` || userMessage === `${prefix}list`:
+            case userMessage === `${prefix}help` || userMessage === `${prefix}menu` || userMessage === `${prefix}bot` || userMessage === `${prefix}list` || userMessage === `${prefix}h`:
                 await helpCommand(sock, chatId, message);
                 commandExecuted = true;
                 break;
@@ -393,9 +393,6 @@ async function handleMessages(sock, messageUpdate, printLog) {
                     return;
                 }
                 await handleAntilinkCommand(sock, chatId, userMessage, senderId, isSenderAdmin);
-                break;
-            case userMessage === `${prefix}meme`:
-                await memeCommand(sock, chatId, message);
                 break;
             case userMessage === `${prefix}joke`:
                 await jokeCommand(sock, chatId, message);
@@ -714,18 +711,23 @@ async function handleMessages(sock, messageUpdate, printLog) {
             }
             case userMessage.startsWith(`${prefix}spotify`):
             case userMessage.startsWith(`${prefix}spot`): {
-                await spotifyCommand(sock, message, "video");
+                await spotifyCommand(sock, chatId, message);
                 break;
             }
             case userMessage.startsWith(`${prefix}tiktok`):
             case userMessage.startsWith(`${prefix}tt`): {
-                await tiktokCommand(sock, chatId, message, "video");
+                await tiktokCommand(sock, chatId, message);
                 break;
             }
 
             case userMessage.startsWith(`${prefix}tiktoka`):
             case userMessage.startsWith(`${prefix}tta`): {
                 await tiktokCommand(sock, chatId, message, "audio");
+                break;
+            }
+            case userMessage.startsWith(`${prefix}profile`):
+            case userMessage.startsWith(`${prefix}pp`): {
+                await profileCommand(sock, chatId, message);
                 break;
             }
 
