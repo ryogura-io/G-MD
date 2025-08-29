@@ -10,7 +10,8 @@ module.exports = {
   "owner": "👑",
   "weather": "⛅",
   "news": "📰",
-  "lyrics": "🎶",
+  "lyrics": "📝",
+  "lyric": "📝",
   "sticker": "🖼",
   "s": "🖼",
   "take": "👊",
@@ -60,6 +61,8 @@ module.exports = {
   // 📥 Downloader
   "play": "🎵",
   "spotify": "🎵",
+  "spot": "🎵",
+  "ytmp3": "🎵",
   "song": "🎧",
   "video": "🎬",
   "movie": "🎬",
@@ -92,5 +95,7 @@ module.exports = {
   "wallpaper": "🖼",
   "wp": "🖼",
   "tiny": "🔗",
-  "tta": "🎵"
+  "tta": "🎵",
+  "profile": "👤",
+  "pp": "👤"
 };
