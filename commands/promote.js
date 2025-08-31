@@ -89,4 +89,4 @@ async function promoteCommand(sock, chatId, mentionedJids, message) {
 //     }
 // }
 
-module.exports = { promoteCommand, handlePromotionEvent };
+module.exports = { promoteCommand };
