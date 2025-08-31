@@ -2,136 +2,149 @@ const settings = require('../settings');
 const { action } = require('../main');
 const fs = require('fs');
 const path = require('path');
+const axios = require("axios");
 
+function formatTime(seconds) {
+    const days = Math.floor(seconds / (24 * 60 * 60));
+    seconds = seconds % (24 * 60 * 60);
+    const hours = Math.floor(seconds / (60 * 60));
+    seconds = seconds % (60 * 60);
+    const minutes = Math.floor(seconds / 60);
+    seconds = Math.floor(seconds % 60);
+
+    let time = '';
+    if (days > 0) time += `${days}d `;
+    if (hours > 0) time += `${hours}h `;
+    if (minutes > 0) time += `${minutes}m `;
+    if (seconds > 0 || time === '') time += `${seconds}s`;
+
+    return time.trim();
+}
 
 async function helpCommand(sock, chatId, message) {
+    const uptimeInSeconds = process.uptime();
+    const uptimeFormatted = formatTime(uptimeInSeconds);
+
+    const now = new Date();
+    const time = now.toLocaleTimeString();
+    const date = now.toLocaleDateString();
+
+
     const helpMessage = `
-✦──── *ＧＵＲＡ ＭＤ*  ────✦
-✦──── by *ＲＹＯＵ*  ────✦
-PREFIX - [ ${settings.prefix} ]
-MODE - PUBLIC
-VERSION - ${settings.version}
-━━━━━━━━━━━━━━━━━━━━━━
-━━━━━━━━━━━━━━━━━━━━━━
-🌐 ≫ GENERAL COMMANDS ≪
-✦ help / menu
-✦ ping
-✦ alive
-✦ tts <text>
-✦ owner
-✦ joke
-✦ quote
-✦ fact
-✦ weather <city>
-✦ news
-✦ attp <text>
-✦ fancy <text>
-✦ tiny <link>
-✦ define <word>
-✦ lyrics <song_title>
-✦ movie <movie-title>
-✦ 8ball <question>
-✦ groupinfo
-✦ staff / admins 
-✦ vv
-✦ jid
-━━━━━━━━━━━━━━━━━━━━━━
-👮 ≫ ADMIN COMMANDS ≪
-✦ ban @user
-✦ promote @user
-✦ demote @user
-✦ mute <minutes>
-✦ unmute
-✦ delete / del
-✦ kick @user
-✦ warnings @user
-✦ warn @user
-✦ antilink
-✦ antibadword
-✦ clear
-✦ tag <message>
-✦ tagall
-✦ chatbot
-✦ resetlink
-✦ welcome <on/off>
-✦ goodbye <on/off>
-━━━━━━━━━━━━━━━━━━━━━━
-🔒 ≫ OWNER COMMANDS ≪
-✦ mode
-✦ autostatus
-✦ clearsession
-✦ antidelete
-✦ cleartmp
-✦ setpp <reply to image>
-✦ autoreact
-✦ autotyping <on/off>
-✦ autoread <on/off>
-━━━━━━━━━━━━━━━━━━━━━━
-🎨 ≫ IMAGE / STICKER ≪
-✦ simage <reply to sticker>
-✦ sticker <reply to image>
-✦ meme
-✦ take <packname> 
-━━━━━━━━━━━━━━━━━━━━━━
-🎮 ≫ GAMES ≪
-✦ tictactoe @user
-✦ hangman
-✦ guess <letter>
-✦ trivia
-✦ answer <answer>
-✦ truth
-✦ dare
-✦ ship @user
-━━━━━━━━━━━━━━━━━━━━━━
-🔤 ≫ TEXTMAKER ≪
-✦ neon <text>
-✦ 1917 <text>
-✦ hacker <text>
-✦ blackpink <text>
-✦ glitch <text>
-━━━━━━━━━━━━━━━━━━━━━━
-📥 ≫ DOWNLOADERS ≪
-✦ play <song_name>
-✦ song <song_name>
-✦ spotify <link>
-✦ instagram <link>
-✦ facebook <link>
-✦ tiktok <link>
-✦ video <song name>
-✦ ytmp4 <link>
-✦ twitter <link>
-✦ wallpaper <link>
-━━━━━━━━━━━━━━━━━━━━━━
-🍥 ≫ ANIME ≪
-✦ anime <anime_name>
-✦ waifu
-━━━━━━━━━━━━━━━━━━━━━━
-━━━━━━━━━━━━━━━━━━━━━━
-*𝙶𝚄𝚁𝙰-𝙼𝙳* by Ryou ✨`;
+╭──《  ɢᴜʀᴀ-ᴍᴅ  》───⊷
+│ ╭────✧❁✧────◆
+│ │ ᴏᴡɴᴇʀ ~ ʀʏᴏᴜ
+│ │ ᴘʀᴇꜰɪx ~ [${settings.prefix}]
+│ │ ᴍᴏᴅᴇ ~ PUBLIC
+│ │ ᴜᴘᴛɪᴍᴇ ~ ${uptimeFormatted}
+│ │ ᴛɪᴍᴇ ~ ${time}
+│ │ ᴅᴀᴛᴇ ~ ${date}
+│ │ ᴠᴇʀꜱɪᴏɴ ~ v${settings.version}
+│ ╰──────✧❁✧──────◆
+╰══════════════════⊷
+╭────❏ 🌐 *ɢᴇɴᴇʀᴀʟ* ❏
+│ ʜᴇʟᴘ / ᴍᴇɴᴜ
+│ ᴘɪɴɢ
+│ ᴀʟɪᴠᴇ
+│ ᴛᴛꜱ <ᴛᴇxᴛ>
+│ ᴏᴡɴᴇʀ
+│ ᴊᴏᴋᴇ
+│ ϙᴜᴏᴛᴇ
+│ ꜰᴀᴄᴛ
+│ ᴡᴇᴀᴛʜᴇʀ <ᴄɪᴛʏ>
+│ ɴᴇᴡꜱ
+│ ᴀᴛᴛᴘ <ᴛᴇxᴛ>
+│ ꜰᴀɴᴄʏ <ᴛᴇxᴛ>
+│ ᴛɪɴʏ <ʟɪɴᴋ>
+│ ᴅᴇꜰɪɴᴇ <ᴡᴏʀᴅ>
+│ ʟʏʀɪᴄꜱ <ꜱᴏɴɢ_ᴛɪᴛʟᴇ>
+│ ᴍᴏᴠɪᴇ <ᴛɪᴛʟᴇ>
+│ ᴛᴏᴍᴘ3 <ᴠɪᴅᴇᴏ>
+│ 8ʙᴀʟʟ <ϙᴜᴇꜱᴛɪᴏɴ>
+│ ɢʀᴏᴜᴘɪɴꜰᴏ
+│ ꜱᴛᴀꜰꜰ / ᴀᴅᴍɪɴꜱ
+│ ᴠᴠ
+│ ᴊɪᴅ
+│────❏ 👮 *ᴀᴅᴍɪɴ* ❏
+│ ʙᴀɴ @ᴜꜱᴇʀ
+│ ᴘʀᴏᴍᴏᴛᴇ @ᴜꜱᴇʀ
+│ ᴅᴇᴍᴏᴛᴇ @ᴜꜱᴇʀ
+│ ᴍᴜᴛᴇ <ᴍɪɴ>
+│ ᴜɴᴍᴜᴛᴇ
+│ ᴅᴇʟᴇᴛᴇ / ᴅᴇʟ
+│ ᴋɪᴄᴋ @ᴜꜱᴇʀ
+│ ᴡᴀʀɴɪɴɢꜱ @ᴜꜱᴇʀ
+│ ᴡᴀʀɴ @ᴜꜱᴇʀ
+│ ᴀɴᴛɪʟɪɴᴋ
+│ ᴀɴᴛɪʙᴀᴅᴡᴏʀᴅ
+│ ᴄʟᴇᴀʀ
+│ ᴛᴀɢ <ᴍᴇꜱꜱᴀɢᴇ>
+│ ᴛᴀɢᴀʟʟ
+│ ᴄʜᴀᴛʙᴏᴛ
+│ ʀᴇꜱᴇᴛʟɪɴᴋ
+│ ᴡᴇʟᴄᴏᴍᴇ <ᴏɴ/ᴏꜰꜰ>
+│ ɢᴏᴏᴅʙʏᴇ <ᴏɴ/ᴏꜰꜰ>
+│────❏ 🔒 *ᴏᴡɴᴇʀ* ❏
+│ ᴍᴏᴅᴇ
+│ ᴀᴜᴛᴏꜱᴛᴀᴛᴜꜱ
+│ ᴄʟᴇᴀʀꜱᴇꜱꜱɪᴏɴ
+│ ᴀɴᴛɪᴅᴇʟᴇᴛᴇ
+│ ᴄʟᴇᴀʀᴛᴍᴘ
+│ ꜱᴇᴛᴘᴘ <ʀᴇᴘʟʏ ɪᴍᴀɢᴇ>
+│ ᴀᴜᴛᴏʀᴇᴀᴄᴛ
+│ ᴀᴜᴛᴏᴛʏᴘɪɴɢ <ᴏɴ/ᴏꜰꜰ>
+│ ᴀᴜᴛᴏʀᴇᴀᴅ <ᴏɴ/ᴏꜰꜰ>
+│────❏ 🎨 *ꜱᴛɪᴄᴋᴇʀ* ❏
+│ ꜱɪᴍᴀɢᴇ <ʀᴇᴘʟʏ ꜱᴛɪᴄᴋᴇʀ>
+│ ꜱᴛɪᴄᴋᴇʀ <ʀᴇᴘʟʏ ɪᴍᴀɢᴇ>
+│ ᴛᴀᴋᴇ <ᴘᴀᴄᴋɴᴀᴍᴇ>
+│────❏ 🎮 *ɢᴀᴍᴇꜱ* ❏
+│ ᴛɪᴄᴛᴀᴄᴛᴏᴇ @ᴜꜱᴇʀ
+│ ʜᴀɴɢᴍᴀɴ
+│ ɢᴜᴇꜱꜱ <ʟᴇᴛᴛᴇʀ>
+│ ᴛʀɪᴠɪᴀ
+│ ᴀɴꜱᴡᴇʀ <ᴀɴꜱᴡᴇʀ>
+│ ᴛʀᴜᴛʜ
+│ ᴅᴀʀᴇ
+│ ꜱʜɪᴘ @ᴜꜱᴇʀ
+│────❏ 🔤 *ᴛᴇxᴛᴍᴀᴋᴇʀ* ❏
+│ ɴᴇᴏɴ <ᴛᴇxᴛ>
+│ 1917 <ᴛᴇxᴛ>
+│ ʜᴀᴄᴋᴇʀ <ᴛᴇxᴛ>
+│ ʙʟᴀᴄᴋᴘɪɴᴋ <ᴛᴇxᴛ>
+│ ɢʟɪᴛᴄʜ <ᴛᴇxᴛ>
+│────❏ 📥 *ᴅᴏᴡɴʟᴏᴀᴅᴇʀꜱ* ❏
+│ ᴘʟᴀʏ <ꜱᴏɴɢ>
+│ ꜱᴏɴɢ <ꜱᴏɴɢ>
+│ ꜱᴘᴏᴛɪꜰʏ <ʟɪɴᴋ/ɴᴀᴍᴇ>
+│ ɪɴꜱᴛᴀɢʀᴀᴍ <ʟɪɴᴋ>
+│ ꜰᴀᴄᴇʙᴏᴏᴋ <ʟɪɴᴋ>
+│ ᴛɪᴋᴛᴏᴋ <ʟɪɴᴋ>
+│ ᴠɪᴅᴇᴏ <ꜱᴏɴɢ>
+│ ʏᴛᴍᴘ4 <ʟɪɴᴋ>
+│ ᴛᴡɪᴛᴛᴇʀ <ʟɪɴᴋ>
+│ ᴡᴀʟʟᴘᴀᴘᴇʀ <ʟɪɴᴋ>
+│ ɪᴍᴀɢᴇ <Qᴜᴇʀʏ>
+│────❏ 🍥 *ᴀɴɪᴍᴇ* ❏
+│ ᴀɴɪᴍᴇ <ɴᴀᴍᴇ>
+│ ᴡᴀɪꜰᴜ
+╰━━━━━━━━━━━─
+> ɢᴜʀᴀ-ᴍᴅ ʙʏ ʀʏᴏᴜ ✨
+`;
 
     try {
-        const imagePath = path.join(__dirname, '../assets/bot_image.jpg');
-        
-        if (fs.existsSync(imagePath)) {
-            const imageBuffer = fs.readFileSync(imagePath);
-            
-            await sock.sendMessage(chatId, {
-                image: imageBuffer,
-                caption: helpMessage,
-                contextInfo: {
-                }
-            },{ quoted: message });
-        } else {
-            console.error('Bot image not found at:', imagePath);
-            await sock.sendMessage(chatId, { 
-                text: helpMessage,
-                contextInfo: {
-                }
-            });
-        }
-    } catch (error) {
-        console.error('Error in help command:', error);
-        await sock.sendMessage(chatId, { text: helpMessage });
+        const videoPath = path.join(__dirname, "../assets/eren.mp4"); // 👈 rename your downloaded file to .mp4
+        const gifBuffer = fs.readFileSync(videoPath);
+
+        await sock.sendMessage(chatId, {
+            video: gifBuffer,
+            caption: helpMessage,
+            gifPlayback: true
+        }, { quoted: message });
+
+    } catch (err) {
+        console.error("Error sending help GIF:", err);
+        await sock.sendMessage(chatId, { text: helpMessage }, { quoted: message });
     }
 }
 
