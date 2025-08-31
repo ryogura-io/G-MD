@@ -4,6 +4,7 @@ module.exports = {
   // 🌐 General
   "menu": "📂",
   "help": "📜",
+  "h": "📜",
   "ping": "⚡",
   "alive": "✅",
   "tts": "🔊",
@@ -38,7 +39,6 @@ module.exports = {
   // 🎮 Games
   "tictactoe": "❌⭕",
   "hangman": "🪢",
-  "trivia": "❓",
   "truth": "🤔",
   "dare": "🔥",
 
@@ -68,6 +68,8 @@ module.exports = {
   "movie": "🎬",
   "imdb": "🎬",
   "ytmp4": "📹",
+  "tomp3": "🎶",
+  "toaudio": "🎶",
   "tiktok": "🎶",
   "tt": "🎶",
   "instagram": "📷",
