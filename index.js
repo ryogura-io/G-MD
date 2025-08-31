@@ -1,6 +1,5 @@
 /**
- Gura-io Bot - A WhatsApp Bot
- * 
+GURA-MD
  * This program is free software: you can redistribute it and/or modify
  * Credits:
  * - Baileys Library by @adiwajshing
