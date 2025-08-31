@@ -149,4 +149,4 @@ async function demoteCommand(sock, chatId, mentionedJids, message) {
 //     }
 // }
 
-module.exports = { demoteCommand, handleDemotionEvent };
+module.exports = { demoteCommand };
