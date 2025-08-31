@@ -27,7 +27,7 @@ async function wallpaperCommand(sock, chatId, message) {
             chatId,
             {
                 image: { url: randomImage },
-                caption: `🖼️ *Wallpaper Result*\n🔖 Type: ${randomEntry.type}`
+                caption: `🖼️ *Wallpaper Result*\n🔖 Type: ${randomEntry.type}\n> *𝙶𝚄𝚁𝙰-𝙼𝙳*`
             },
             { quoted: message }
         );
@@ -39,3 +39,4 @@ async function wallpaperCommand(sock, chatId, message) {
 }
 
 module.exports = wallpaperCommand;
+
