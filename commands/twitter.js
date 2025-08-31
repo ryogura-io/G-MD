@@ -19,9 +19,9 @@ module.exports = async (sock, chatId, message) => {
             if (!media.url) continue;
 
             if (media.type === "video") {
-                await sock.sendMessage(chatId, { video: { url: media.url.toString() }, caption: `▶ Downloaded video from Twitter` }, { quoted: message });
+                await sock.sendMessage(chatId, { video: { url: media.url.toString() }, caption: `▶ Downloaded video from Twitter \n> *𝙶𝚄𝚁𝙰-𝙼𝙳*` }, { quoted: message });
             } else if (media.type === "photo") {
-                await sock.sendMessage(chatId, { image: { url: media.url.toString() }, caption: `🖼 Twitter image` }, { quoted: message });
+                await sock.sendMessage(chatId, { image: { url: media.url.toString() }, caption: `🖼 Twitter image \n> *𝙶𝚄𝚁𝙰-𝙼𝙳*` }, { quoted: message });
             }
         }
     } catch (err) {
