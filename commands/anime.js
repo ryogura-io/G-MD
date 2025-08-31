@@ -53,6 +53,7 @@ module.exports = async function animeCommand(sock, chatId, message) {
 
 📝 Description:
 ${anime.description ? anime.description.replace(/<[^>]+>/g, '') : "N/A"}
+        \n> *𝙶𝚄𝚁𝙰-𝙼𝙳*
         `;
 
         await sock.sendMessage(chatId, {
