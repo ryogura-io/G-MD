@@ -19,7 +19,7 @@ async function tiktokCommand(sock, chatId, message) {
 
         if (dreadedData?.success && dreadedData?.tiktok?.video) {
             videoUrl = dreadedData.tiktok.video;
-            captionText = `🎶 TikTok Video\n\n📝 ${dreadedData.tiktok.description || ""}\n👤 ${dreadedData.tiktok.author?.nickname || "Unknown"}`;
+            captionText = `🎶 TikTok Video\n\n📝 ${dreadedData.tiktok.description || ""}\n👤 ${dreadedData.tiktok.author?.nickname || "Unknown"} \n> *𝙶𝚄𝚁𝙰-𝙼𝙳*`;
         }
 
         // If dreaded failed, fallback to GiftedTech
@@ -30,7 +30,7 @@ async function tiktokCommand(sock, chatId, message) {
 
             if (giftedData?.success && giftedData?.result) {
                 videoUrl = giftedData.result.video_no_watermark || giftedData.result.videoUrl || giftedData.result.video;
-                captionText = `🎶 TikTok Video\n\n📝 ${giftedData.result.desc || ""}`;
+                captionText = `🎶 TikTok Video\n\n📝 ${giftedData.result.desc || ""} \n> *𝙶𝚄𝚁𝙰-𝙼𝙳*`;
             }
         }
 
@@ -66,7 +66,7 @@ async function tiktokCommand(sock, chatId, message) {
                 video: videoBuffer,
                 mimetype: "video/mp4",
                 fileName: "tiktok.mp4",
-                caption: captionText || "🎶 TikTok Video",
+                caption: captionText || "🎶 TikTok Video \n> *𝙶𝚄𝚁𝙰-𝙼𝙳*",
                 contextInfo: {
                     externalAdReply: {
                         title: "TikTok Downloader",
