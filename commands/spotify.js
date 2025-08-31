@@ -29,7 +29,7 @@ async function spotifyCommand(sock, chatId, message) {
             chatId,
             {
                 image: { url: thumbnail },
-                caption: `🎶 *Spotify Downloader* 🎶\n\n🎵 *Title:* ${title}\n⏱️ *Duration:* ${duration}\n🔗 [Download Link](${download_url})`
+                caption: `🎶 *Spotify Downloader* 🎶\n\n🎵 *Title:* ${title}\n⏱️ *Duration:* ${duration} \n> *𝙶𝚄𝚁𝙰-𝙼𝙳*`
             },
             { quoted: message }
         );
