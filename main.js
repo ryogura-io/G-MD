@@ -44,7 +44,6 @@ const kickCommand = require(`./commands/kick`);
 const simageCommand = require(`./commands/simage`);
 const attpCommand = require(`./commands/attp`);
 const { startHangman, guessLetter } = require(`./commands/hangman`);
-const { startTrivia, answerTrivia } = require(`./commands/trivia`);
 const { eightBallCommand } = require(`./commands/eightball`);
 const { dareCommand } = require(`./commands/dare`);
 const { truthCommand } = require(`./commands/truth`);
@@ -90,7 +89,10 @@ const waifuCmd = require("./commands/waifu");
 const wallpaperCommand = require("./commands/wallpaper");
 const tinyCommand = require("./commands/tiny");
 const spotifyCommand = require("./commands/spotify");
-const profileCommand = require("./commands/profile.js");
+const profileCommand = require("./commands/profile");
+const tomp3Command = require("./commands/tomp3");
+const googleImageCommand = require("./commands/googleImageCommand");
+
 
 // Global settings
 global.packname = settings.packname;
@@ -440,17 +442,6 @@ async function handleMessages(sock, messageUpdate, printLog) {
                     sock.sendMessage(chatId, { text: `Please guess a letter using .guess <letter>`, });
                 }
                 break;
-            case userMessage.startsWith(`${prefix}trivia`):
-                startTrivia(sock, chatId);
-                break;
-            case userMessage.startsWith(`${prefix}answer`):
-                const answer = userMessage.split(` `).slice(1).join(` `);
-                if (answer) {
-                    answerTrivia(sock, chatId, answer);
-                } else {
-                    sock.sendMessage(chatId, { text: `Please provide an answer using .answer <answer>`, });
-                }
-                break;
             case userMessage.startsWith(`${prefix}8ball`):
                 const question = userMessage.split(` `).slice(1).join(` `);
                 await eightBallCommand(sock, chatId, question);
@@ -728,6 +719,16 @@ async function handleMessages(sock, messageUpdate, printLog) {
             case userMessage.startsWith(`${prefix}profile`):
             case userMessage.startsWith(`${prefix}pp`): {
                 await profileCommand(sock, chatId, message);
+                break;
+            }
+            case userMessage.startsWith(`${prefix}tomp3`):
+            case userMessage.startsWith(`${prefix}toaudio`): {
+                await tomp3Command(sock, chatId, message);
+                break;
+            }
+            case userMessage.startsWith(`${prefix}img`):
+            case userMessage.startsWith(`${prefix}image`): {
+                await googleImageCommand(sock, chatId, message);
                 break;
             }
 
