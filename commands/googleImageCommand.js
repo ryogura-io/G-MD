@@ -37,7 +37,7 @@ async function googleImageCommand(sock, chatId, message) {
             chatId,
             {
                 image: { url: imageUrl },
-                caption: `🔍 Google Image Result for: *${query}*`
+                caption: `🔍 Google Image Result for: *${query}* \n> *𝙶𝚄𝚁𝙰-𝙼𝙳*`
             },
             { quoted: message }
         );
@@ -49,3 +49,4 @@ async function googleImageCommand(sock, chatId, message) {
 }
 
 module.exports = googleImageCommand;
+
