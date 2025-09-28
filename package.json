@@ -37,7 +37,6 @@
     "genius-lyrics": "^4.4.7",
     "gtts": "^0.2.1",
     "human-readable": "^0.2.1",
-    "jimp": "^0.16.13",
     "jsdom": "^22.1.0",
     "libphonenumber-js": "^1.11.18",
     "libsignal": "^2.0.1",
