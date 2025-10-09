@@ -31,105 +31,41 @@ async function helpCommand(sock, chatId, message) {
 
 
     const helpMessage = `
-╭──《  ɢᴜʀᴀ-ᴍᴅ  》───⊷
-│ ╭────✧❁✧────◆
-│ │ ᴏᴡɴᴇʀ ~ ʀʏᴏᴜ
-│ │ ᴘʀᴇꜰɪx ~ [${settings.prefix}]
-│ │ ᴍᴏᴅᴇ ~ PUBLIC
-│ │ ᴜᴘᴛɪᴍᴇ ~ ${uptimeFormatted}
-│ │ ᴛɪᴍᴇ ~ ${time}
-│ │ ᴅᴀᴛᴇ ~ ${date}
-│ │ ᴠᴇʀꜱɪᴏɴ ~ v${settings.version}
-│ ╰──────✧❁✧──────◆
+╭──《  GURA-MD  》───⊷
+│ ᴏᴡɴᴇʀ ~ ʀʏᴏᴜ
+│ ᴘʀᴇꜰɪx ~ [${settings.prefix}]
+│ ᴜᴘᴛɪᴍᴇ ~ ${uptimeFormatted}
 ╰══════════════════⊷
-╭────❏ *ɢᴇɴᴇʀᴀʟ* ❏
-│ ʜᴇʟᴘ / ᴍᴇɴᴜ
-│ ᴘɪɴɢ
-│ ᴀʟɪᴠᴇ
-│ ᴛᴛꜱ <ᴛᴇxᴛ>
-│ ᴏᴡɴᴇʀ
-│ ᴊᴏᴋᴇ
-│ ϙᴜᴏᴛᴇ
-│ ꜰᴀᴄᴛ
-│ ᴡᴇᴀᴛʜᴇʀ <ᴄɪᴛʏ>
-│ ɴᴇᴡꜱ
-│ ᴀᴛᴛᴘ <ᴛᴇxᴛ>
-│ ꜰᴀɴᴄʏ <ᴛᴇxᴛ>
-│ ᴛɪɴʏ <ʟɪɴᴋ>
-│ ᴅᴇꜰɪɴᴇ <ᴡᴏʀᴅ>
-│ ʟʏʀɪᴄꜱ <ꜱᴏɴɢ_ᴛɪᴛʟᴇ>
-│ ᴍᴏᴠɪᴇ <ᴛɪᴛʟᴇ>
-│ ᴛᴏᴍᴘ3 <ᴠɪᴅᴇᴏ>
-│ 8ʙᴀʟʟ <ϙᴜᴇꜱᴛɪᴏɴ>
-│ ɢʀᴏᴜᴘɪɴꜰᴏ
-│ ꜱᴛᴀꜰꜰ / ᴀᴅᴍɪɴꜱ
-│ ᴠᴠ
-│ ᴊɪᴅ
-│────❏ *ᴀᴅᴍɪɴ* ❏
-│ ʙᴀɴ @ᴜꜱᴇʀ
-│ ᴘʀᴏᴍᴏᴛᴇ @ᴜꜱᴇʀ
-│ ᴅᴇᴍᴏᴛᴇ @ᴜꜱᴇʀ
-│ ᴍᴜᴛᴇ <ᴍɪɴ>
-│ ᴜɴᴍᴜᴛᴇ
-│ ᴅᴇʟᴇᴛᴇ / ᴅᴇʟ
-│ ᴋɪᴄᴋ @ᴜꜱᴇʀ
-│ ᴡᴀʀɴɪɴɢꜱ @ᴜꜱᴇʀ
-│ ᴡᴀʀɴ @ᴜꜱᴇʀ
-│ ᴀɴᴛɪʟɪɴᴋ
-│ ᴀɴᴛɪʙᴀᴅᴡᴏʀᴅ
-│ ᴄʟᴇᴀʀ
-│ ᴛᴀɢ <ᴍᴇꜱꜱᴀɢᴇ>
-│ ᴛᴀɢᴀʟʟ
-│ ᴄʜᴀᴛʙᴏᴛ
-│ ʀᴇꜱᴇᴛʟɪɴᴋ
-│ ᴡᴇʟᴄᴏᴍᴇ <ᴏɴ/ᴏꜰꜰ>
-│ ɢᴏᴏᴅʙʏᴇ <ᴏɴ/ᴏꜰꜰ>
-│────❏ *ᴏᴡɴᴇʀ* ❏
-│ ᴍᴏᴅᴇ
-│ ᴀᴜᴛᴏꜱᴛᴀᴛᴜꜱ
-│ ᴄʟᴇᴀʀꜱᴇꜱꜱɪᴏɴ
-│ ᴀɴᴛɪᴅᴇʟᴇᴛᴇ
-│ ᴄʟᴇᴀʀᴛᴍᴘ
-│ ꜱᴇᴛᴘᴘ <ʀᴇᴘʟʏ ɪᴍᴀɢᴇ>
-│ ᴀᴜᴛᴏʀᴇᴀᴄᴛ
-│ ᴀᴜᴛᴏᴛʏᴘɪɴɢ <ᴏɴ/ᴏꜰꜰ>
-│ ᴀᴜᴛᴏʀᴇᴀᴅ <ᴏɴ/ᴏꜰꜰ>
-│────❏ *ꜱᴛɪᴄᴋᴇʀ* ❏
-│ ꜱɪᴍᴀɢᴇ <ʀᴇᴘʟʏ ꜱᴛɪᴄᴋᴇʀ>
-│ ꜱᴛɪᴄᴋᴇʀ <ʀᴇᴘʟʏ ɪᴍᴀɢᴇ>
-│ ᴛᴀᴋᴇ <ᴘᴀᴄᴋɴᴀᴍᴇ>
-│────❏ *ɢᴀᴍᴇꜱ* ❏
-│ ᴛɪᴄᴛᴀᴄᴛᴏᴇ @ᴜꜱᴇʀ
-│ ʜᴀɴɢᴍᴀɴ
-│ ɢᴜᴇꜱꜱ <ʟᴇᴛᴛᴇʀ>
-│ ᴛʀɪᴠɪᴀ
-│ ᴀɴꜱᴡᴇʀ <ᴀɴꜱᴡᴇʀ>
-│ ᴛʀᴜᴛʜ
-│ ᴅᴀʀᴇ
-│ ꜱʜɪᴘ @ᴜꜱᴇʀ
-│────❏ *ᴛᴇxᴛᴍᴀᴋᴇʀ* ❏
-│ ɴᴇᴏɴ <ᴛᴇxᴛ>
-│ 1917 <ᴛᴇxᴛ>
-│ ʜᴀᴄᴋᴇʀ <ᴛᴇxᴛ>
-│ ʙʟᴀᴄᴋᴘɪɴᴋ <ᴛᴇxᴛ>
-│ ɢʟɪᴛᴄʜ <ᴛᴇxᴛ>
-│────❏ *ᴅᴏᴡɴʟᴏᴀᴅᴇʀꜱ* ❏
-│ ᴘʟᴀʏ <ꜱᴏɴɢ>
-│ ꜱᴏɴɢ <ꜱᴏɴɢ>
-│ ꜱᴘᴏᴛɪꜰʏ <ʟɪɴᴋ/ɴᴀᴍᴇ>
-│ ɪɴꜱᴛᴀɢʀᴀᴍ <ʟɪɴᴋ>
-│ ꜰᴀᴄᴇʙᴏᴏᴋ <ʟɪɴᴋ>
-│ ᴛɪᴋᴛᴏᴋ <ʟɪɴᴋ>
-│ ᴠɪᴅᴇᴏ <ꜱᴏɴɢ>
-│ ʏᴛᴍᴘ4 <ʟɪɴᴋ>
-│ ᴛᴡɪᴛᴛᴇʀ <ʟɪɴᴋ>
-│ ᴡᴀʟʟᴘᴀᴘᴇʀ <ʟɪɴᴋ>
-│ ɪᴍᴀɢᴇ <Qᴜᴇʀʏ>
-│────❏ *ᴀɴɪᴍᴇ* ❏
-│ ᴀɴɪᴍᴇ <ɴᴀᴍᴇ>
-│ ᴡᴀɪꜰᴜ
-╰━━━━━━━━━━━─
-> ɢᴜʀᴀ-ᴍᴅ ʙʏ ʀʏᴏᴜ ✨
+✨ Gura-MD Bot Commands
+Bot Prefix ~> [ x ]
+
+🏓 General :
+help, menu, ping, alive, tts <text>, owner, joke, quote, fact, weather <city>, news, attp <text>, fancy <text>, tiny <link>, define <word>, lyrics <song_title>, movie <title>, tomp3 <video>, 8ball <question>, groupinfo, staff, admins, vv, jid
+
+🛠️ Admin :
+ban @user, promote @user, demote @user, mute <min>, unmute, delete, del, kick @user, warnings @user, warn @user, antilink, antibadword, clear, tag <message>, tagall, chatbot, resetlink, welcome <on/off>, goodbye <on/off>
+
+👑 Owner :
+mode, autostatus, clearsession, antidelete, cleartmp, setpp <reply image>, autoreact, autotyping <on/off>, autoread <on/off>
+
+🎨 Sticker :
+simage <reply sticker>, sticker <reply image>, take <packname>
+
+🎮 Games :
+tictactoe @user, hangman, guess <letter>, trivia, answer <answer>, truth, dare, ship @user
+
+🧩 Textmaker :
+neon <text>, 1917 <text>, hacker <text>, blackpink <text>, glitch <text>
+
+⬇️ Downloaders :
+play <song>, song <song>, spotify <link/name>, instagram <link>, facebook <link>, tiktok <link>, video <song>, ytmp4 <link>, twitter <link>, wallpaper <link>, image <query>
+
+🎌 Anime :
+anime <name>, waifu
+
+━━━━━━━━━━━━━━━
+
+> Gura-MD by Ryou ✨
 `;
 
     try {
