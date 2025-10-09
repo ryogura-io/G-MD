@@ -52,7 +52,7 @@ mode, autostatus, clearsession, antidelete, cleartmp, setpp <reply image>, autor
 simage <reply sticker>, sticker <reply image>, take <packname>
 
 🎮 Games :
-tictactoe @user, hangman, guess <letter>, trivia, answer <answer>, truth, dare, ship @user
+tictactoe @user, hangman, guess <letter>, truth, dare, ship @user
 
 🧩 Textmaker :
 neon <text>, 1917 <text>, hacker <text>, blackpink <text>, glitch <text>
