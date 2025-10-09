@@ -9,7 +9,7 @@ async function aliveCommand(sock, chatId, message) {
         // Then reply
         const message1 = `*𝙶𝚄𝚁𝙰-𝙼𝙳 is Active!*\n\n` +
                        `*Version:* ${settings.version}\n` +
-                       `*Status:* Online\n` +
+                       `*Status:* Online \n` +
                        `*Mode:* ${currentMode}`;
 
         await sock.sendMessage(chatId, {
