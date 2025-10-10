@@ -31,13 +31,12 @@ async function helpCommand(sock, chatId, message) {
 
 
     const helpMessage = `
-╭──《  GURA-MD  》───⊷
-│ ᴏᴡɴᴇʀ ~ ʀʏᴏᴜ
-│ ᴘʀᴇꜰɪx ~ [${settings.prefix}]
-│ ᴜᴘᴛɪᴍᴇ ~ ${uptimeFormatted}
-╰══════════════════⊷
+╭──《  GURA-MD  》──────────⊷
+│ Owner ~ Ryou
+│ Prefix ~ [${settings.prefix}]
+│ Uptime ~ ${uptimeFormatted}
+╰═══════════════════════⊷
 ✨ Gura-MD Bot Commands
-Bot Prefix ~> [ x ]
 
 🏓 General :
 help, menu, ping, alive, tts <text>, owner, joke, quote, fact, weather <city>, news, attp <text>, fancy <text>, tiny <link>, define <word>, lyrics <song_title>, movie <title>, tomp3 <video>, 8ball <question>, groupinfo, staff, admins, vv, jid
