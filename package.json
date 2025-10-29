@@ -1,13 +1,10 @@
 {
-  "name": "knightbot",
+  "name": "Gura-MD",
   "version": "1.0.0",
-  "description": "WhatsApp Bot",
+  "description": "Gura WhatsApp Bot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "docker:build": "docker build -t knightbot .",
-    "docker:run": "docker run -e SESSION_ID=$SESSION_ID knightbot"
+    "start": "node index.js"
   },
   "keywords": [
     "whatsapp-bot"
@@ -26,6 +23,7 @@
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.12",
     "cookie": "^0.5.0",
+  "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "events": "^3.3.0",
     "express": "^5.1.0",
