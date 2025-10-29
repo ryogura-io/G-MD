@@ -66,7 +66,7 @@ anime <name>, waifu
 `;
 
     try {
-        const videoPath = path.join(__dirname, "../assets/eren.mp4"); // 👈 rename your downloaded file to .mp4
+        const videoPath = path.join(__dirname, "../assets/violet2.mp4"); // 👈 rename your downloaded file to .mp4
         const gifBuffer = fs.readFileSync(videoPath);
 
         await sock.sendMessage(chatId, {
