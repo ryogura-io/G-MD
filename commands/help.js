@@ -42,7 +42,7 @@ async function helpCommand(sock, chatId, message) {
 help, menu, ping, alive, tts <text>, owner, joke, quote, fact, weather <city>, news, attp <text>, fancy <text>, tiny <link>, define <word>, lyrics <song_title>, movie <title>, tomp3 <video>, 8ball <question>, groupinfo, staff, admins, vv, jid
 
 🛠️ Admin :
-ban @user, promote @user, demote @user, mute <min>, unmute, delete, del, kick @user, warnings @user, warn @user, antilink, antibadword, clear, tag <message>, tagall, chatbot, resetlink, welcome <on/off>, goodbye <on/off>
+ban @user, promote @user, demote @user, mute <min>, unmute, delete, kick @user, warn @user, antilink, antibadword, clear, tag <message>, tagall, chatbot, resetlink, welcome <on/off>, goodbye <on/off>
 
 👑 Owner :
 mode, autostatus, clearsession, antidelete, cleartmp, setpp <reply image>, autoreact, autotyping <on/off>, autoread <on/off>
@@ -57,12 +57,10 @@ tictactoe @user, hangman, guess <letter>, truth, dare, ship @user
 neon <text>, 1917 <text>, hacker <text>, blackpink <text>, glitch <text>
 
 ⬇️ Downloaders :
-play <song>, song <song>, spotify <link/name>, instagram <link>, facebook <link>, tiktok <link>, video <song>, ytmp4 <link>, twitter <link>, wallpaper <link>, image <query>
+play <song>, spotify <link/name>, instagram <link>, facebook <link>, tiktok <link>, video <song>, wallpaper <link>, image <query>
 
 🎌 Anime :
 anime <name>, waifu
-
-━━━━━━━━━━━━━━━
 
 > Gura-MD by Ryou ✨
 `;
