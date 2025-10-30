@@ -97,9 +97,10 @@ store.bind(sock.ev);
 
                 if (!sock.__welcomeSent) {
                     const owner = settings.ownerNumber + '@s.whatsapp.net';
+const prefix = settings.prefix;
                     const msg = `✅ *Gura Bot Connected!*\n\n` +
                         `⏰ Connected at: ${new Date().toLocaleString()}\n` +
-                        `📱 Status: Ready` 
+                        `📜 Type *${prefix}help* to get started...` 
 
                     try {
                         await sock.sendMessage(owner, { text: msg });
@@ -224,5 +225,5 @@ app.listen(PORT, "0.0.0.0", () =>
 
 // Print to terminal every 5 minutes
 setInterval(() => {
-    console.log("💓 Keep alive... " + new Date().toLocaleString());
+    console.log("💓 Keep alive... ");
 }, 5 * 60 * 1000); // 5 minutes
