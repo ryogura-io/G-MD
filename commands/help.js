@@ -31,38 +31,37 @@ async function helpCommand(sock, chatId, message) {
 
 
     const helpMessage = `
-╭──《  GURA-MD  》──────────⊷
-│ Owner ~ Ryou
-│ Prefix ~ [${settings.prefix}]
-│ Uptime ~ ${uptimeFormatted}
-╰═══════════════════════⊷
-✨ Gura-MD Bot Commands
+╭──《  GURA-MD  》───────⊷
+│ owner ~ ryou
+│ prefix ~ [${settings.prefix}]
+│ uptime ~ ${uptimeFormatted}
+╰═════════════════════⊷
+✨ *Gura-MD Bot Commands*
 
-🏓 General :
+🏓 *General* :
 help, menu, ping, alive, tts <text>, owner, joke, quote, fact, weather <city>, news, attp <text>, fancy <text>, tiny <link>, define <word>, lyrics <song_title>, movie <title>, tomp3 <video>, 8ball <question>, groupinfo, staff, admins, vv, jid
 
-🛠️ Admin :
-ban @user, promote @user, demote @user, mute <min>, unmute, delete, kick @user, warn @user, antilink, antibadword, clear, tag <message>, tagall, chatbot, resetlink, welcome <on/off>, goodbye <on/off>
+🛠️ *Admin* :
+ban @user, promote @user, demote @user, mute <min>, unmute, delete, kick @user, warn @user, antilink, antibadword, clear, tag <message>, tagall, resetlink, welcome <on/off>, goodbye <on/off>
 
-👑 Owner :
+👑 *Owner* :
 mode, autostatus, clearsession, antidelete, cleartmp, setpp <reply image>, autoreact, autotyping <on/off>, autoread <on/off>
 
-🎨 Sticker :
+🎨 *Sticker* :
 simage <reply sticker>, sticker <reply image>, take <packname>
 
-🎮 Games :
+🎮 *Games* :
 tictactoe @user, hangman, guess <letter>, truth, dare, ship @user
 
-🧩 Textmaker :
+🧩 *Textmaker* :
 neon <text>, 1917 <text>, hacker <text>, blackpink <text>, glitch <text>
 
-⬇️ Downloaders :
+⬇️ *Downloaders* :
 play <song>, spotify <link/name>, instagram <link>, facebook <link>, tiktok <link>, video <song>, wallpaper <link>, image <query>
 
-🎌 Anime :
+🎌 *Anime* :
 anime <name>, waifu
-
-> Gura-MD by Ryou ✨
+> Gura-MD by ryou ✨
 `;
 
     try {
