@@ -96,18 +96,17 @@ store.bind(sock.ev);
                 console.info('✅ WhatsApp bot connected successfully!');
 
                 if (!sock.__welcomeSent) {
-                    const firstOwner = settings.ownerNumber
+                    const owner = settings.ownerNumber + '@s.whatsapp.net';
                     const msg = `✅ *Gura Bot Connected!*\n\n` +
-                        `🤖 WhatsApp Bot is online\n` +
                         `⏰ Connected at: ${new Date().toLocaleString()}\n` +
                         `📱 Status: Ready` 
 
                     try {
-                        await sock.sendMessage(firstOwner, { text: msg });
-                        console.info(`✅ Success message sent to owner: ${firstOwner}`);
+                        await sock.sendMessage(owner, { text: msg });
+                        console.info(`✅ Success message sent to owner: ${owner}`);
                         sock.__welcomeSent = true; // prevent spamming
                     } catch (err) {
-                        console.error(`❌ Failed to send message to ${firstOwner}:`, err);
+                        console.error(`❌ Failed to send message to ${owner}:`, err);
                     }
                 }
             }
