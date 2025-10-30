@@ -61,7 +61,7 @@ play <song>, spotify <link/name>, instagram <link>, facebook <link>, tiktok <lin
 
 🎌 *Anime* :
 anime <name>, waifu
-> Gura-MD by ryou ✨
+> Gura-MD by ryou. 
 `;
 
     try {
