@@ -69,7 +69,7 @@ async function startBot(number) {
             syncFullHistory: false,
             browser: ['Ubuntu', 'Chrome', '20.0.04'],
             generateHighQualityLinkPreview: true,
-            markOnlineOnConnect: false,
+            markOnlineOnConnect: true,
             getMessage: async () => undefined,
         });
 
