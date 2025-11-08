@@ -1,64 +1,74 @@
-const yts = require('yt-search');
 const axios = require('axios');
 
 async function playCommand(sock, chatId, message) {
     try {
-      
-        const text = message.message?.conversation || message.message?.extendedTextMessage?.text;
+        // Extract query from message
+        const text = message.message?.conversation || message.message?.extendedTextMessage?.text || '';
         const searchQuery = text.split(' ').slice(1).join(' ').trim();
         
+        // Validate input with styled message
         if (!searchQuery) {
-            return await sock.sendMessage(chatId, { 
-                text: "What song do you want to download?"
+            return await sock.sendMessage(chatId, {
+                text: `Please specify a song!\nExample: Play faded`
             });
         }
 
-        // Search for the song
-        const { videos } = await yts(searchQuery);
-        if (!videos || videos.length === 0) {
-            return await sock.sendMessage(chatId, { 
-                text: "No songs found!"
-            });
-        }
-
-        // Send loading message
+        // Send initial processing message
         await sock.sendMessage(chatId, {
-            text: "_Please wait your download is in progress_"
+            text: `🔍 *Searching for:* "${searchQuery}"`,
+            react: { text: '🔎', key: message.key }
         });
 
-        // Get the first video result
-        const video = videos[0];
-        const urlYt = video.url;
+        // Fetch from API
+        const apiUrl = `https://apis.davidcyriltech.my.id/play?query=${encodeURIComponent(searchQuery)}`;
+        const { data } = await axios.get(apiUrl, { timeout: 30000 });
 
-        // Fetch audio data from API
-        const response = await axios.get(`https://apis-keith.vercel.app/download/dlmp3?url=${urlYt}`);
-        const data = response.data;
-
-        if (!data || !data.status || !data.result || !data.result.downloadUrl) {
-            return await sock.sendMessage(chatId, { 
-                text: "Failed to fetch audio from the API. Please try again later."
+        // Validate API response
+        if (!data?.status || !data?.result) {
+            return await sock.sendMessage(chatId, {
+                text: `❌ Song not found!`
             });
         }
 
-        const audioUrl = data.result.downloadUrl;
-        const title = data.result.title;
+        const songData = data.result;
+        const downloadUrl = songData.download_url;
+        const thumbnail = songData.thumbnail?.trim();
+
+        // Format views count
+        const formattedViews = songData.views 
+            ? parseInt(songData.views).toLocaleString() 
+            : 'N/A';
+
+        // Create styled box message
+        const boxMessage = `SONG FOUND \n🎵 Title: ${songData.title || 'Unknown'}`;
+
+        // Send metadata with thumbnail
+        await sock.sendMessage(chatId, {
+            image: { url: thumbnail },
+            caption: boxMessage
+        });
 
         // Send the audio
         await sock.sendMessage(chatId, {
-            audio: { url: audioUrl },
+            audio: { url: downloadUrl },
             mimetype: "audio/mpeg",
-            fileName: `${title}.mp3`
-        }, { quoted: message });
+            fileName: `${songData.title.replace(/[^\w\s]/gi, '') || 'audio'}.mp3`,
+            ptt: false
+        });
+
+        
 
     } catch (error) {
-        console.error('Error in song2 command:', error);
-        await sock.sendMessage(chatId, { 
-            text: "Download failed. Please try again later."
+        console.error('Play Command Error:', error);
+        
+        // Create error box
+        const errorBox = `❌ Failed to process your request`;
+
+        await sock.sendMessage(chatId, {
+            text: errorBox,
+            react: { text: '❌', key: message.key }
         });
     }
 }
 
-module.exports = playCommand; 
-
-/*Powered by GURA-IO ✨*
-*Credits to Keith MD*`*/
+module.exports = playCommand;
